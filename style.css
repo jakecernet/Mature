@@ -296,3 +296,36 @@ footer {
 		padding: 1rem 0.75rem 3rem;
 	}
 }
+
+.slika-ob-sliki {
+	border: 1px solid #e8e2d8;
+	border-radius: 3px;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+
+	.slika {
+		flex: 1;
+		position: relative;
+
+		img {
+			max-width: 100%;
+			display: block;
+			border-radius: 3px;
+		}
+
+		label {
+			position: absolute;
+			bottom: 0.5rem;
+			left: 0.5rem;
+			background: rgba(255, 255, 255, 0.8);
+			padding: 0.2rem 0.4rem;
+			font-size: 0.75rem;
+			border-radius: 3px;
+			font-weight: 600;
+			color: var(--accent);
+		}
+	}
+}
