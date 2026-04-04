@@ -329,3 +329,38 @@ footer {
 		}
 	}
 }
+
+.dual-col-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.88rem;
+	margin-top: 0.5rem;
+}
+.dual-col-table th {
+	background: #2c1810;
+	color: #f5f0e8;
+	padding: 0.5rem 0.8rem;
+	text-align: left;
+	font-weight: 600;
+}
+.dual-col-table td {
+	padding: 0.45rem 0.8rem;
+	border-bottom: 1px solid #eee;
+	vertical-align: top;
+}
+.dual-col-table tr:last-child td {
+	border-bottom: none;
+}
+.dual-col-table .criteria-label {
+	font-weight: 700;
+	color: var(--accent);
+	font-size: 0.78rem;
+	padding-right: 0.4rem;
+	white-space: nowrap;
+}
+.dual-col-table .col-a {
+	background: #faf8f4;
+}
+.dual-col-table .col-b {
+	background: #f4f8fa;
+}
