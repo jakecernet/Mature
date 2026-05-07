@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zgodovina – Priprava na Maturo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0c0a;
+    --surface: #181410;
+    --surface2: #211d18;
+    --surface3: #2d2720;
+    --gold: #c9963a;
+    --gold2: #e8b85a;
+    --gold-dim: rgba(201,150,58,0.15);
+    --cream: #f0e6d3;
+    --cream-dim: rgba(240,230,211,0.7);
+    --cream-faint: rgba(240,230,211,0.15);
+    --red: #c0392b;
+    --green: #2d7a4a;
+    --blue: #2475b0;
+    --text: #e8ddd0;
+    --text-dim: #a09080;
+    --border: rgba(201,150,58,0.2);
+    --border2: rgba(240,230,211,0.08);
+    --r: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Source Serif 4', serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(201,150,58,0.08), transparent);
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,12,10,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    display: flex; align-items: center; gap: 2rem;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--gold2);
+    letter-spacing: 0.02em; white-space: nowrap;
+  }
+  .logo span { color: var(--cream-dim); font-weight: 400; font-size: 0.85em; }
+  nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+  nav button {
+    background: none; border: none;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.85rem; font-weight: 400;
+    color: var(--text-dim);
+    cursor: pointer; padding: 0.4rem 0.85rem;
+    border-radius: var(--r);
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  nav button:hover { color: var(--gold2); background: var(--gold-dim); }
+  nav button.active { color: var(--gold2); background: var(--gold-dim); font-weight: 600; }
+
+  /* ── SECTIONS ── */
+  .section { display: none; animation: fadeUp 0.4s ease; }
+  .section.active { display: block; }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+  .container { max-width: 1200px; margin: 0 auto; padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem); }
+
+  /* ── HOME ── */
+  .hero {
+    text-align: center; padding: clamp(3rem, 8vw, 6rem) 1rem;
+    max-width: 800px; margin: 0 auto;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900;
+    color: var(--cream);
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .hero h1 em { color: var(--gold2); font-style: italic; }
+  .hero p { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.7; }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem; margin-top: 1rem;
+  }
+  .nav-card {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: left;
+  }
+  .nav-card:hover { border-color: var(--border); transform: translateY(-2px); background: var(--surface2); }
+  .nav-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .nav-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold2); margin-bottom: 0.4rem; }
+  .nav-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; }
+  .periods-row {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  .period-badge {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 0.3rem 0.9rem;
+    font-size: 0.78rem; color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header { margin-bottom: 2rem; }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700;
+    color: var(--cream);
+  }
+  .section-header p { color: var(--text-dim); margin-top: 0.4rem; font-size: 0.95rem; }
+  .divider { height: 1px; background: linear-gradient(to right, var(--gold), transparent); margin: 0.75rem 0 0; width: 100px; }
+
+  /* ── DOWNLOADS ── */
+  .year-block { margin-bottom: 2rem; }
+  .year-title {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem;
+    color: var(--gold2); font-style: italic;
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .year-title::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+  .term-block { margin-bottom: 1rem; }
+  .term-label {
+    font-size: 0.75rem; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .dl-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .dl-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: var(--r); padding: 0.45rem 0.9rem;
+    font-size: 0.82rem; color: var(--text);
+    text-decoration: none; transition: all 0.2s;
+    font-family: 'Source Serif 4', serif;
+  }
+  .dl-btn:hover { border-color: var(--gold); color: var(--gold2); background: var(--gold-dim); }
+  .dl-btn.sol { border-color: rgba(45,122,74,0.3); }
+  .dl-btn.sol:hover { border-color: #2d7a4a; color: #4aad72; background: rgba(45,122,74,0.1); }
+
+  /* ── FLASHCARDS ── */
+  .fc-controls {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    align-items: center; margin-bottom: 1.5rem;
+  }
+  .fc-select {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 0.5rem 1rem;
+    color: var(--text); font-family: 'Source Serif 4', serif; font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: var(--r); padding: 0.5rem 1rem;
+    color: var(--text); font-family: 'Source Serif 4', serif; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn:hover { border-color: var(--gold); color: var(--gold2); }
+  .btn.primary { background: var(--gold); border-color: var(--gold); color: #0e0c0a; font-weight: 600; }
+  .btn.primary:hover { background: var(--gold2); }
+  .fc-counter { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim); }
+  .fc-progress { height: 3px; background: var(--surface3); border-radius: 2px; margin-bottom: 1.5rem; overflow: hidden; }
+  .fc-progress-bar { height: 100%; background: linear-gradient(to right, var(--gold), var(--gold2)); border-radius: 2px; transition: width 0.3s; }
+  .fc-scene {
+    perspective: 1200px; width: 100%; max-width: 700px;
+    margin: 0 auto; aspect-ratio: 16/9; max-height: 380px;
+    cursor: pointer;
+  }
+  .fc-card-inner {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(.4,0,.2,1);
+  }
+  .fc-scene.flipped .fc-card-inner { transform: rotateY(180deg); }
+  .fc-face {
+    position: absolute; inset: 0;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    backface-visibility: hidden;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
+  .fc-face.back { transform: rotateY(180deg); background: var(--surface2); border-color: var(--border); }
+  .fc-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .fc-q { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2.5vw, 1.5rem); font-weight: 500; color: var(--cream); line-height: 1.4; }
+  .fc-a { font-size: clamp(0.9rem, 1.8vw, 1.1rem); color: var(--text); line-height: 1.6; }
+  .fc-hint { margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-dim); font-style: italic; }
+  .fc-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+  .known-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; justify-content: center; }
+  .known-badge { padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; }
+  .known-badge.yes { background: rgba(45,122,74,0.2); color: #4aad72; border: 1px solid rgba(45,122,74,0.3); }
+  .known-badge.no { background: rgba(192,57,43,0.2); color: #e74c3c; border: 1px solid rgba(192,57,43,0.3); }
+
+  /* ── QUIZ ── */
+  .quiz-setup { max-width: 600px; margin: 0 auto; text-align: center; padding: 2rem 1rem; }
+  .quiz-setup h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--cream); margin-bottom: 1rem; }
+  .quiz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .quiz-opt {
+    background: var(--surface); border: 2px solid var(--border2);
+    border-radius: var(--r); padding: 0.75rem;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Source Serif 4', serif; color: var(--text); font-size: 0.9rem;
+  }
+  .quiz-opt:hover, .quiz-opt.sel { border-color: var(--gold); background: var(--gold-dim); color: var(--gold2); }
+  .quiz-q-wrap { max-width: 760px; margin: 0 auto; }
+  .quiz-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .quiz-score { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim); margin-left: auto; }
+  .q-box {
+    background: var(--surface); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 1.5rem 2rem; margin-bottom: 1rem;
+  }
+  .q-category {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .q-text { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--cream); line-height: 1.5; }
+  .q-source { font-size: 0.8rem; color: var(--text-dim); font-style: italic; margin-top: 0.5rem; }
+  .answers { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1rem; }
+  @media(max-width: 500px) { .answers { grid-template-columns: 1fr; } }
+  .ans-btn {
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: var(--r); padding: 0.75rem 1rem;
+    text-align: left; cursor: pointer;
+    font-family: 'Source Serif 4', serif; font-size: 0.9rem; color: var(--text);
+    transition: all 0.2s; line-height: 1.4;
+  }
+  .ans-btn:hover:not(:disabled) { border-color: var(--gold); background: var(--gold-dim); }
+  .ans-btn.correct { border-color: #2d7a4a !important; background: rgba(45,122,74,0.15) !important; color: #4aad72 !important; }
+  .ans-btn.wrong { border-color: #c0392b !important; background: rgba(192,57,43,0.15) !important; color: #e74c3c !important; }
+  .ans-btn:disabled { cursor: default; }
+  .q-explain {
+    background: var(--surface2); border: 1px solid rgba(201,150,58,0.2);
+    border-radius: var(--r); padding: 1rem 1.25rem;
+    font-size: 0.9rem; line-height: 1.6; color: var(--text);
+    margin-bottom: 1rem;
+    display: none;
+  }
+  .q-explain.show { display: block; }
+  .quiz-result { text-align: center; padding: 3rem 1rem; max-width: 500px; margin: 0 auto; }
+  .result-score { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--gold2); }
+  .result-msg { font-size: 1.1rem; color: var(--text-dim); margin: 0.5rem 0 2rem; }
+
+  /* ── TEXTBOOK ── */
+  .tb-layout { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; }
+  @media(max-width: 700px) { .tb-layout { grid-template-columns: 1fr; } }
+  .tb-nav { position: sticky; top: 80px; align-self: start; }
+  .tb-nav-item {
+    display: block; width: 100%;
+    background: none; border: none; border-left: 2px solid var(--border2);
+    padding: 0.5rem 0.75rem;
+    text-align: left; cursor: pointer;
+    font-family: 'Source Serif 4', serif; font-size: 0.85rem;
+    color: var(--text-dim); transition: all 0.2s; margin-bottom: 0.1rem;
+    line-height: 1.4;
+  }
+  .tb-nav-item:hover { color: var(--gold2); border-left-color: var(--gold); }
+  .tb-nav-item.active { color: var(--gold2); border-left-color: var(--gold); font-weight: 600; }
+  .tb-chapter { display: none; }
+  .tb-chapter.active { display: block; animation: fadeUp 0.3s ease; }
+  .tb-h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--cream); margin-bottom: 0.5rem; }
+  .tb-h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold2); margin: 2rem 0 0.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border2); }
+  .tb-p { color: var(--text); line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+  .tb-ul { list-style: none; margin: 0 0 1rem; }
+  .tb-ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; color: var(--text); font-size: 0.95rem; line-height: 1.6; }
+  .tb-ul li::before { content: '◆'; position: absolute; left: 0; color: var(--gold); font-size: 0.5rem; top: 0.4em; }
+  .tb-key {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 1rem 1.25rem; margin-bottom: 1rem;
+  }
+  .tb-key strong { color: var(--gold2); font-weight: 600; }
+  .tb-timeline { margin: 1rem 0 1.5rem; }
+  .tl-item { display: flex; gap: 1rem; margin-bottom: 0.75rem; align-items: flex-start; }
+  .tl-year {
+    flex-shrink: 0; width: 70px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+    color: var(--gold); text-align: right; padding-top: 0.15rem;
+  }
+  .tl-dot { flex-shrink: 0; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; margin-top: 0.45rem; }
+  .tl-text { font-size: 0.9rem; color: var(--text); line-height: 1.5; flex: 1; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 1rem; }
+  .tag { background: var(--gold-dim); border: 1px solid var(--border); border-radius: 12px; padding: 0.2rem 0.6rem; font-size: 0.75rem; color: var(--gold); }
+
+  /* ── AI CHAT ── */
+  .chat-wrap { max-width: 780px; margin: 0 auto; }
+  .chat-messages {
+    background: var(--surface); border: 1px solid var(--border2);
+    border-radius: 10px; padding: 1.25rem;
+    min-height: 320px; max-height: 500px; overflow-y: auto;
+    margin-bottom: 1rem;
+  }
+  .msg { margin-bottom: 1rem; }
+  .msg-role { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+  .msg.user .msg-role { color: var(--gold); }
+  .msg.ai .msg-role { color: #4aad72; }
+  .msg-body { font-size: 0.9rem; line-height: 1.7; color: var(--text); }
+  .chat-input-row { display: flex; gap: 0.5rem; }
+  #chatInput {
+    flex: 1; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 0.75rem 1rem;
+    color: var(--text); font-family: 'Source Serif 4', serif; font-size: 0.9rem;
+    resize: none;
+  }
+  #chatInput:focus { outline: none; border-color: var(--gold); }
+  .quick-qs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+  .quick-q {
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: 16px; padding: 0.3rem 0.8rem;
+    font-size: 0.8rem; color: var(--text-dim); cursor: pointer;
+    font-family: 'Source Serif 4', serif; transition: all 0.2s;
+  }
+  .quick-q:hover { border-color: var(--gold); color: var(--gold); }
+  .typing { color: var(--text-dim); font-style: italic; font-size: 0.85rem; }
+
+  /* misc */
+  .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-dim); font-style: italic; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Zgodovina <span>Matura</span></div>
+  <nav>
+    <button onclick="showSection('home')" class="active" id="nav-home">Domov</button>
+    <button onclick="showSection('downloads')" id="nav-downloads">📥 Prenosi</button>
+    <button onclick="showSection('flashcards')" id="nav-flashcards">🃏 Flashcardi</button>
+    <button onclick="showSection('quiz')" id="nav-quiz">✏️ Kviz</button>
+    <button onclick="showSection('textbook')" id="nav-textbook">📖 Učbenik</button>
+    <button onclick="showSection('ai')" id="nav-ai">🤖 AI Asistent</button>
+  </nav>
+</header>
+
+<!-- ═══════════════ HOME ═══════════════ -->
+<div id="section-home" class="section active">
+  <div class="container">
+    <div class="hero">
+      <h1>Priprava na maturo<br>iz <em>Zgodovine</em></h1>
+      <p>Vsi izpitni roki od jeseni 2021 do jeseni 2023. Flashcardi, kviz, učbenik in AI asistent za učinkovito ponavljanje.</p>
+      <div class="cards-grid">
+        <div class="nav-card" onclick="showSection('downloads')">
+          <div class="icon">📥</div>
+          <h3>Prenosi</h3>
+          <p>Vse izpitne pole in navodila za ocenjevanje – 6 rokov, direktno z RIC.si</p>
+        </div>
+        <div class="nav-card" onclick="showSection('flashcards')">
+          <div class="icon">🃏</div>
+          <h3>Flashcardi</h3>
+          <p>50+ kartic s ključnimi pojmi, datumi in dogodki za hitro ponavljanje</p>
+        </div>
+        <div class="nav-card" onclick="showSection('quiz')">
+          <div class="icon">✏️</div>
+          <h3>Kviz</h3>
+          <p>Vprašanja z razlagami, prilagojena tipu maturitetnih nalog</p>
+        </div>
+        <div class="nav-card" onclick="showSection('textbook')">
+          <div class="icon">📖</div>
+          <h3>Učbenik</h3>
+          <p>Strukturiran povzetek snovi po poglavjih z chronologijami in ključnimi pojmi</p>
+        </div>
+        <div class="nav-card" onclick="showSection('ai')">
+          <div class="icon">🤖</div>
+          <h3>AI Asistent</h3>
+          <p>Postavi katerokoli vprašanje iz zgodovine in prejmi takojšen odgovor</p>
+        </div>
+      </div>
+      <div class="periods-row">
+        <span class="period-badge">JES 2021</span>
+        <span class="period-badge">SPO 2022</span>
+        <span class="period-badge">JES 2022</span>
+        <span class="period-badge">SPO 2023</span>
+        <span class="period-badge">JES 2023</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ DOWNLOADS ═══════════════ -->
+<div id="section-downloads" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Izpitne pole &amp; Rešitve</h2>
+      <p>Direktne povezave na PDF datoteke z RIC.si</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="year-block">
+      <div class="year-title">Jesenski izpitni rok 2021</div>
+      <div class="term-block">
+        <div class="term-label">1. termin</div>
+        <div class="dl-row">
+          <a class="dl-btn" href="https://www.ric.si/mma/M212-511-1-1.pdf/2022040407574841/?m=1649051868" target="_blank">📄 Izpitna pola 1</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M212-511-1-2.pdf/2022040407574865/?m=1649051868" target="_blank">📄 Izpitna pola 2</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M212-511-1-3.pdf/2022040407574811/?m=1649051868" target="_blank">✅ Navodila za ocenjevanje</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M212-511-3-1I.pdf/2022040608210942/?m=1649226069" target="_blank">🇮🇹 IP1 (ital.)</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M212-511-3-2I.pdf/2022040608210886/?m=1649226068" target="_blank">🇮🇹 IP2 (ital.)</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M212-511-3-3I.pdf/2022040608210829/?m=1649226068" target="_blank">✅ Navodila (ital.)</a>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-label">2. termin</div>
+        <div class="dl-row">
+          <a class="dl-btn" href="https://www.ric.si/mma/M212-511-2-1.pdf/2022040407574921/?m=1649051869" target="_blank">📄 Izpitna pola 1</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M212-511-2-2.pdf/2022040407574967/?m=1649051870" target="_blank">📄 Izpitna pola 2</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M212-511-2-3.pdf/2022040407574914/?m=1649051869" target="_blank">✅ Navodila za ocenjevanje</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-block">
+      <div class="year-title">Spomladanski izpitni rok 2022</div>
+      <div class="term-block">
+        <div class="dl-row">
+          <a class="dl-btn" href="https://www.ric.si/mma/M221-511-1-1.pdf/2023040410375817/?m=1680597478" target="_blank">📄 Izpitna pola 1</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M221-511-1-2.pdf/2023040410381099/?m=1680597490" target="_blank">📄 Izpitna pola 2</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M221-511-1-3.pdf/2023040410382479/?m=1680597504" target="_blank">✅ Navodila za ocenjevanje</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M221-511-3-1I.pdf/2023040410384996/?m=1680597529" target="_blank">🇮🇹 IP1 (ital.)</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M221-511-3-2I.pdf/2023040410390148/?m=1680597541" target="_blank">🇮🇹 IP2 (ital.)</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M221-511-3-3I.pdf/2023040410391270/?m=1680597552" target="_blank">✅ Navodila (ital.)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-block">
+      <div class="year-title">Jesenski izpitni rok 2022</div>
+      <div class="term-block">
+        <div class="term-label">2. termin</div>
+        <div class="dl-row">
+          <a class="dl-btn" href="https://www.ric.si/mma/M222-511-2-1.pdf/2023040312531399/?m=1680519193" target="_blank">📄 Izpitna pola 1</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M222-511-2-2.pdf/2023040312531437/?m=1680519194" target="_blank">📄 Izpitna pola 2</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M222-511-2-3.pdf/2023040312532337/?m=1680519203" target="_blank">✅ Navodila za ocenjevanje</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-block">
+      <div class="year-title">Spomladanski izpitni rok 2023</div>
+      <div class="term-block">
+        <div class="dl-row">
+          <a class="dl-btn" href="https://www.ric.si/mma/M231-511-1-1.pdf/20231009133717/?m=1696851437" target="_blank">📄 Izpitna pola 1</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M231-511-1-2.pdf/20231009133730/?m=1696851450" target="_blank">📄 Izpitna pola 2</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M231-511-1-3.pdf/20231009133744/?m=1696851464" target="_blank">✅ Navodila za ocenjevanje</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M231-511-3-1I.pdf/20231009133410/?m=1696851250" target="_blank">🇮🇹 IP1 (ital.)</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M231-511-3-2I.pdf/20231009133419/?m=1696851259" target="_blank">🇮🇹 IP2 (ital.)</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M231-511-3-3I.pdf/20231009133427/?m=1696851267" target="_blank">✅ Navodila (ital.)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-block">
+      <div class="year-title">Jesenski izpitni rok 2023</div>
+      <div class="term-block">
+        <div class="term-label">1. termin</div>
+        <div class="dl-row">
+          <a class="dl-btn" href="https://www.ric.si/mma/M232-511-1-1.pdf/20240329105129/?m=1711705889" target="_blank">📄 Izpitna pola 1</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M232-511-1-2.pdf/20240329105130/?m=1711705889" target="_blank">📄 Izpitna pola 2</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M232-511-1-3.pdf/20240415070018/?m=1713157218" target="_blank">✅ Navodila za ocenjevanje</a>
+        </div>
+      </div>
+      <div class="term-block">
+        <div class="term-label">2. termin</div>
+        <div class="dl-row">
+          <a class="dl-btn" href="https://www.ric.si/mma/M232-511-2-1.pdf/20240329105132/?m=1711705889" target="_blank">📄 Izpitna pola 1</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M232-511-2-2.pdf/20240329105133/?m=1711705889" target="_blank">📄 Izpitna pola 2</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M232-511-2-3.pdf/20240329105134/?m=1711705889" target="_blank">✅ Navodila za ocenjevanje</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M232-511-4-1I.pdf/20240329105204/?m=1711705924" target="_blank">🇮🇹 IP1 (ital.)</a>
+          <a class="dl-btn" href="https://www.ric.si/mma/M232-511-4-2I.pdf/20240329105205/?m=1711705924" target="_blank">🇮🇹 IP2 (ital.)</a>
+          <a class="dl-btn sol" href="https://www.ric.si/mma/M232-511-4-3I.pdf/20240329105206/?m=1711705924" target="_blank">✅ Navodila (ital.)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ FLASHCARDS ═══════════════ -->
+<div id="section-flashcards" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Flashcardi</h2>
+      <p>Klikni na kartico za obrat · puščice za navigacijo</p>
+      <div class="divider"></div>
+    </div>
+    <div class="fc-controls">
+      <select class="fc-select" id="fc-category" onchange="filterCards()">
+        <option value="vse">Vse kategorije</option>
+        <option value="1.sv">1. svetovna vojna</option>
+        <option value="medvojna">Medvojna obdobje</option>
+        <option value="2.sv">2. svetovna vojna</option>
+        <option value="hladna">Hladna vojna</option>
+        <option value="jug">Jugoslavija</option>
+        <option value="slo">Slovenija</option>
+        <option value="col">Dekolonizacija</option>
+        <option value="ekon">Ekonomska zgodovina</option>
+      </select>
+      <button class="btn" onclick="shuffleCards()">🔀 Premeši</button>
+      <button class="btn" onclick="resetKnown()">↺ Ponastavi</button>
+      <span class="fc-counter" id="fc-counter">1 / 1</span>
+    </div>
+    <div class="fc-progress"><div class="fc-progress-bar" id="fc-bar"></div></div>
+    <div class="fc-scene" id="fc-scene" onclick="flipCard()">
+      <div class="fc-card-inner" id="fc-inner">
+        <div class="fc-face front">
+          <div class="fc-tag" id="fc-tag"></div>
+          <div class="fc-q" id="fc-q"></div>
+          <div class="fc-hint">Klikni za odgovor</div>
+        </div>
+        <div class="fc-face back">
+          <div class="fc-tag" id="fc-tag2"></div>
+          <div class="fc-a" id="fc-a"></div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="btn" onclick="prevCard()">← Nazaj</button>
+      <button class="btn" onclick="markKnown(false)" style="border-color:rgba(192,57,43,0.4);color:#e74c3c;">✗ Ne vem</button>
+      <button class="btn" onclick="markKnown(true)" style="border-color:rgba(45,122,74,0.4);color:#4aad72;">✓ Vem</button>
+      <button class="btn" onclick="nextCard()">Naprej →</button>
+    </div>
+    <div class="known-bar" id="known-bar"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ QUIZ ═══════════════ -->
+<div id="section-quiz" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Kviz</h2>
+      <p>Preizkusi znanje z vprašanji maturo tipa</p>
+      <div class="divider"></div>
+    </div>
+    <div id="quiz-setup-view" class="quiz-setup">
+      <h3>Izberi kategorijo in začni</h3>
+      <div class="quiz-grid">
+        <div class="quiz-opt sel" onclick="selectCategory(this,'vse')">🌍 Vse teme</div>
+        <div class="quiz-opt" onclick="selectCategory(this,'1.sv')">⚔️ 1. svetovna vojna</div>
+        <div class="quiz-opt" onclick="selectCategory(this,'medvojna')">📰 Medvojna</div>
+        <div class="quiz-opt" onclick="selectCategory(this,'2.sv')">💣 2. svetovna vojna</div>
+        <div class="quiz-opt" onclick="selectCategory(this,'hladna')">🧊 Hladna vojna</div>
+        <div class="quiz-opt" onclick="selectCategory(this,'jug')">🇾🇺 Jugoslavija</div>
+        <div class="quiz-opt" onclick="selectCategory(this,'slo')">🇸🇮 Slovenija</div>
+        <div class="quiz-opt" onclick="selectCategory(this,'col')">🌍 Dekolonizacija</div>
+      </div>
+      <button class="btn primary" onclick="startQuiz()">Začni kviz →</button>
+    </div>
+    <div id="quiz-q-view" style="display:none;">
+      <div class="quiz-q-wrap">
+        <div class="quiz-header">
+          <button class="btn" onclick="endQuiz()">← Nazaj</button>
+          <div class="fc-progress" style="flex:1;margin:0;"><div class="fc-progress-bar" id="q-bar"></div></div>
+          <div class="quiz-score" id="q-score">0 / 0</div>
+        </div>
+        <div class="q-box">
+          <div class="q-category" id="q-cat"></div>
+          <div class="q-text" id="q-text"></div>
+          <div class="q-source" id="q-source"></div>
+        </div>
+        <div class="answers" id="answers"></div>
+        <div class="q-explain" id="q-explain"></div>
+        <div id="q-next-row" style="display:none;text-align:center;">
+          <button class="btn primary" onclick="nextQuestion()">Naslednje vprašanje →</button>
+        </div>
+      </div>
+    </div>
+    <div id="quiz-result-view" style="display:none;">
+      <div class="quiz-result">
+        <div class="result-score" id="result-score"></div>
+        <div class="result-msg" id="result-msg"></div>
+        <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+          <button class="btn primary" onclick="startQuiz()">Ponovi kviz</button>
+          <button class="btn" onclick="endQuiz()">Izbiraj temo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ TEXTBOOK ═══════════════ -->
+<div id="section-textbook" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Učbenik</h2>
+      <p>Povzetek snovi za maturo iz zgodovine</p>
+      <div class="divider"></div>
+    </div>
+    <div class="tb-layout">
+      <div class="tb-nav">
+        <button class="tb-nav-item active" onclick="showChapter('ch1',this)">1. svetovna vojna</button>
+        <button class="tb-nav-item" onclick="showChapter('ch2',this)">Medvojna (1918–1939)</button>
+        <button class="tb-nav-item" onclick="showChapter('ch3',this)">2. svetovna vojna</button>
+        <button class="tb-nav-item" onclick="showChapter('ch4',this)">Hladna vojna</button>
+        <button class="tb-nav-item" onclick="showChapter('ch5',this)">Dekolonizacija</button>
+        <button class="tb-nav-item" onclick="showChapter('ch6',this)">Jugoslavija 1918–1941</button>
+        <button class="tb-nav-item" onclick="showChapter('ch7',this)">NOB in Slovenija</button>
+        <button class="tb-nav-item" onclick="showChapter('ch8',this)">SFRJ 1945–1991</button>
+        <button class="tb-nav-item" onclick="showChapter('ch9',this)">Osamosvojitev</button>
+        <button class="tb-nav-item" onclick="showChapter('ch10',this)">Gospodarska zgodovina</button>
+      </div>
+      <div>
+
+        <div id="ch1" class="tb-chapter active">
+          <div class="tb-h1">1. svetovna vojna (1914–1918)</div>
+          <div class="tag-row"><span class="tag">vzroki</span><span class="tag">bojišča</span><span class="tag">versailles</span><span class="tag">prelomnica</span></div>
+          <div class="tb-h2">Vzroki vojne</div>
+          <div class="tb-p">1. svetovna vojna je izbruhla kot posledica zapletenih vzrokov. <strong>Dolgoročni vzroki</strong> so bili: imperializem in tekmovanje med velesilami za kolonije, militarizem (oboroževalna tekma), zapleteni zavezniški sistemi (Trojno zavezništvo: Nemčija, Avstro-Ogrska, Italija; Trojni sporazum: Francija, Rusija, Velika Britanija) ter nacionalizem (zlasti balkanski).</div>
+          <div class="tb-key"><strong>Neposredni povod:</strong> Atentat na nadvojvodo Franca Ferdinanda v Sarajevu 28. junija 1914. Izvedla ga je tajna srbska organizacija Črna roka, izvajalec Gavrilo Princip.</div>
+          <div class="tb-h2">Potek vojne</div>
+          <div class="tb-timeline">
+            <div class="tl-item"><div class="tl-year">1914</div><div class="tl-dot"></div><div class="tl-text">Julijska kriza, AO objavi vojno Srbiji; domino-efekt aktivira zaveznice. Schlieffen-ov načrt: napad na Francijo skozi Belgijo. Bitka na Marni – fronta se ustavi.</div></div>
+            <div class="tl-item"><div class="tl-year">1915</div><div class="tl-dot"></div><div class="tl-text">Italija prestopi v Antanto (Londonski sporazum). Začetek soške fronte (11 bitk, 1915–1917). Galipoli.</div></div>
+            <div class="tl-item"><div class="tl-year">1916</div><div class="tl-dot"></div><div class="tl-text">Verdun in Somma – največji pokoli. Jutlandska bitka. Brusilov-ska ofenziva na vzhodu.</div></div>
+            <div class="tl-item"><div class="tl-year">1917</div><div class="tl-dot"></div><div class="tl-text">Vstop ZDA v vojno (april). Ruska revolucija → Rusija izstopi. Preboj pri Kobaridu (24. oktober) – 12. soška bitka.</div></div>
+            <div class="tl-item"><div class="tl-year">1918</div><div class="tl-dot"></div><div class="tl-text">Nemčija kapitulira 11. novembra. Konec vojne.</div></div>
+          </div>
+          <div class="tb-h2">Mirovna ureditev</div>
+          <div class="tb-p">Pariška mirovna konferenca 1919–1920. Versajska pogodba (junij 1919): Nemčija je bila spoznana za krivo, izgubila kolonije, Alzacijo-Loreno, plačala reparacije 132 mlrd zlatih mark, vojska omejena. Nastale so nove države: Češkoslovaška, Jugoslavija, Poljska, Madžarska, Avstrija, Finska, Estonija, Latvija, Litva. Wilson-ovih 14 točk: načelo samoodločbe narodov, Liga narodov.</div>
+          <div class="tb-key"><strong>Kobariška bitka (1917):</strong> Avstro-nemški preboj je povzročil umik Italije za reko Piavo. Na slovenskem ozemlju je bila ena najpomembnejših bitk. Danes je v Kobaridu muzej 1. svetovne vojne.</div>
+          <div class="tb-h2">Slovenci v 1. sv. vojni</div>
+          <div class="tb-p">Slovensko ozemlje je bilo neposredno bojišče – soška fronta je tekla skozi Slovenijo. Slovenci so bili vojaki cesarsko-kraljevske armade AO, borili so se na vseh frontah. V vojni je padlo okoli 35.000 Slovencev. Isonzo-front je ustvaril ogromno beguncev s Primorske in Notranjske.</div>
+        </div>
+
+        <div id="ch2" class="tb-chapter">
+          <div class="tb-h1">Medvojna (1918–1939)</div>
+          <div class="tag-row"><span class="tag">weimar</span><span class="tag">fašizem</span><span class="tag">nacizem</span><span class="tag">velika depresija</span><span class="tag">totalitarizem</span></div>
+          <div class="tb-h2">Weimarska republika</div>
+          <div class="tb-p">Po 1. sv. vojni je bila v Nemčiji ustanovljena Weimarska republika (1919–1933). Soočala se je z vojno bremenom versajskega miru, hiperinflacijo (1923), politično nestabilnostjo in nazadnje z veliko depresijo (1929). Te razmere so prispevale k vzponu Hitlerja in NSDAP.</div>
+          <div class="tb-h2">Vzpon fašizma in nacizma</div>
+          <div class="tb-key"><strong>Fašizem v Italiji:</strong> Benito Mussolini je z "Marš na Rim" (1922) prevzel oblast. Fašistična diktatura: kult vodja, antikomunizem, nacionalizem, likvidacija opozicije.</div>
+          <div class="tb-key"><strong>Nacizem v Nemčiji:</strong> Adolf Hitler je postal kancler januarja 1933. Nürnberški zakoni (1935): antisemitska zakonodaja. Kristalna noč (1938). Nemčija je začela oboroževanje kljub Versaju.</div>
+          <div class="tb-h2">Velika depresija (1929)</div>
+          <div class="tb-p">Black Thursday, 24. oktober 1929 – zlom NYSE. Brezposelnost v ZDA dosegla 25 %, v Evropi podobno. Rooseveltov New Deal v ZDA. Depresija je pospešila radikalizacijo politik in vzpon totalitarnih gibanj.</div>
+          <div class="tb-h2">ZSSR in Stalinizem</div>
+          <div class="tb-p">Po Leninovi smrti (1924) je oblast prevzel Stalin. Petletni načrti: industrializacija na silo, kolektivizacija kmetijstva → Holodomor (lakota v Ukrajini, 1932–33). Veliki teror in čistke (1936–38): milijoni umorjenih ali deportiranih v gulag.</div>
+          <div class="tb-h2">Pot do 2. svetovne vojne</div>
+          <div class="tb-timeline">
+            <div class="tl-item"><div class="tl-year">1933</div><div class="tl-dot"></div><div class="tl-text">Hitler kancler. Nemčija zapusti Ligo narodov.</div></div>
+            <div class="tl-item"><div class="tl-year">1935</div><div class="tl-dot"></div><div class="tl-text">Remilitarizacija Porenja. Italija napade Etiopijo.</div></div>
+            <div class="tl-item"><div class="tl-year">1936–39</div><div class="tl-dot"></div><div class="tl-text">Španska državljanska vojna – urjenje nacistične in fašistične armade (Guernica).</div></div>
+            <div class="tl-item"><div class="tl-year">1938</div><div class="tl-dot"></div><div class="tl-text">Anschluss Avstrije. Münchenski sporazum: priključitev Sudetov.</div></div>
+            <div class="tl-item"><div class="tl-year">1939</div><div class="tl-dot"></div><div class="tl-text">Pakt Ribbentrop-Molotov (avg). 1. september: Nemčija napade Poljsko → 2. sv. vojna.</div></div>
+          </div>
+        </div>
+
+        <div id="ch3" class="tb-chapter">
+          <div class="tb-h1">2. svetovna vojna (1939–1945)</div>
+          <div class="tag-row"><span class="tag">holokavst</span><span class="tag">antihitlerjevska koalicija</span><span class="tag">pacifik</span><span class="tag">konec vojne</span></div>
+          <div class="tb-h2">Potek vojne</div>
+          <div class="tb-timeline">
+            <div class="tl-item"><div class="tl-year">1939</div><div class="tl-dot"></div><div class="tl-text">Napad na Poljsko (sept). Phony war na zahodu.</div></div>
+            <div class="tl-item"><div class="tl-year">1940</div><div class="tl-dot"></div><div class="tl-text">Nemški bliskoviti napad na Z. Evropo. Padec Francije (junij). Bitka za Britanijo.</div></div>
+            <div class="tl-item"><div class="tl-year">1941</div><div class="tl-dot"></div><div class="tl-text">Operacija Barbarossa: napad na ZSSR (22.6.). Napad na Jugoslavijo (april). Pearl Harbor → vstop ZDA.</div></div>
+            <div class="tl-item"><div class="tl-year">1942–43</div><div class="tl-dot"></div><div class="tl-text">Prelomnica: El Alamein, Stalingrad (feb '43), Guadalcanal.</div></div>
+            <div class="tl-item"><div class="tl-year">1944</div><div class="tl-dot"></div><div class="tl-text">Normandija D-Day (6. junij). Osvobajanje Zahoda. Osvoboditev Beograda (okt).</div></div>
+            <div class="tl-item"><div class="tl-year">1945</div><div class="tl-dot"></div><div class="tl-text">Nemčija kapitulira 8. maja. Hirošima, Nagasaki (avg). Japonska kapitulira 2. sept.</div></div>
+          </div>
+          <div class="tb-h2">Holokavst</div>
+          <div class="tb-p">Načrtno uničevanje Judov in drugih skupin (Romi, invalidi, homoseksualci, Slovani). Konferenca v Wannseeju 1942: "Končna rešitev". Sistem koncentracijskih taborišč: Auschwitz-Birkenau, Treblinka, Sobibor. 6 milijonov Judov je bilo umorjenih (Šoa). Nürnberški procesi 1945–46: obsodba nacističnih vojnih zločincev.</div>
+          <div class="tb-h2">Konference zaveznikov</div>
+          <div class="tb-ul">
+            <li><strong>Teheran 1943:</strong> Churchill, Roosevelt, Stalin. Dogovor o odprtju 2. fronte (Normandija).</li>
+            <li><strong>Jalta feb. 1945:</strong> Razdelitev Nemčije na cone, prihodnost Vzhodne Evrope, UNO.</li>
+            <li><strong>Potsdam jul. 1945:</strong> Nemška reparacije, de-nacifikacija, meje Poljske.</li>
+          </div>
+        </div>
+
+        <div id="ch4" class="tb-chapter">
+          <div class="tb-h1">Hladna vojna (1947–1991)</div>
+          <div class="tag-row"><span class="tag">nato</span><span class="tag">vp</span><span class="tag">korea</span><span class="tag">kuba</span><span class="tag">vietnam</span></div>
+          <div class="tb-h2">Začetki hladne vojne</div>
+          <div class="tb-p">Po 2. sv. vojni sta se ZDA in ZSSR znašli v bipolerni konfrontaciji – ideološki (kapitalizem vs. komunizem), politični in vojaški. Churchillov "železni zastor" (1946), Trumanova doktrina (1947), Marshallov plan (obnova Z. Evrope, $13 mlrd), Berlinska blokada (1948–49).</div>
+          <div class="tb-key"><strong>NATO (1949):</strong> Severnoatlantska obrambna zveza. Odgovor ZSSR: Varšavski pakt (1955). Svet razdeljen na sferi vpliva.</div>
+          <div class="tb-h2">Krize in konflikti</div>
+          <div class="tb-ul">
+            <li><strong>Korejska vojna (1950–53):</strong> S. Koreja napade J. Korejo. Intervencija ZN (ZDA). Kitajska vstopi. Premirje vzdolž 38. vzporednika.</li>
+            <li><strong>Berlinska kriza (1961):</strong> Gradnja berlinskega zidu (13. avg). Simbol delitve Evrope.</li>
+            <li><strong>Kubanska raketna kriza (1962):</strong> ZSSR namesti rakete na Kubi. Kennedy vs. Hruščov. Nujni pogovori – rakete odstranjene. Najtesnejša bližina jedrski vojni.</li>
+            <li><strong>Vietnamska vojna (1955–75):</strong> ZDA podpirajo J. Vietnam, ZSSR in Kitajska S. Vietnam. Ameriška zmaga neuspešna – Saigon pade 1975.</li>
+          </div>
+          <div class="tb-h2">Razpad hladne vojne</div>
+          <div class="tb-p">Gorbačov (od 1985): glasnost in perestrojka. Padec berlinskega zidu 9. novembra 1989. Revolucije v V. Evropi. Razpad ZSSR 25. decembra 1991. Konec bipolarne ureditve sveta.</div>
+        </div>
+
+        <div id="ch5" class="tb-chapter">
+          <div class="tb-h1">Dekolonizacija</div>
+          <div class="tag-row"><span class="tag">Afrika</span><span class="tag">Azija</span><span class="tag">gibanje neuvrščenih</span></div>
+          <div class="tb-h2">Vzroki in potek</div>
+          <div class="tb-p">Po 2. sv. vojni je osvobodilno gibanje kolonialnih narodov postalo neustavljivo. Vzroki: oslabelost evropskih sil, naraščajoči nacionalizmi v kolonijah, načelo samoodločbe (UNO), vpliv hladne vojne (ZSSR podpira osvobodilna gibanja).</div>
+          <div class="tb-timeline">
+            <div class="tl-item"><div class="tl-year">1947</div><div class="tl-dot"></div><div class="tl-text">Indija in Pakistan pridobita neodvisnost od Britanije (Jawaharlal Nehru, Muhammad Ali Jinnah).</div></div>
+            <div class="tl-item"><div class="tl-year">1954–62</div><div class="tl-dot"></div><div class="tl-text">Alžirska vojna za neodvisnost od Francije.</div></div>
+            <div class="tl-item"><div class="tl-year">1960</div><div class="tl-dot"></div><div class="tl-text">"Leto Afrike": 17 afriških držav postane neodvisnih.</div></div>
+            <div class="tl-item"><div class="tl-year">1961</div><div class="tl-dot"></div><div class="tl-text">Konferenca v Beogradu: ustanovitev gibanja neuvrščenih (Tito, Nehru, Nasser).</div></div>
+          </div>
+          <div class="tb-key"><strong>Gibanje neuvrščenih:</strong> Jugoslovansko vodstvo (Tito) je imelo ključno vlogo. Zavračalo je uvrščanje v blokovsko politiko in zavzemalo za mir in razorožitev.</div>
+        </div>
+
+        <div id="ch6" class="tb-chapter">
+          <div class="tb-h1">Kraljevina Jugoslavija (1918–1941)</div>
+          <div class="tag-row"><span class="tag">SHS</span><span class="tag">Alexander I.</span><span class="tag">diktatura</span></div>
+          <div class="tb-h2">Nastanek države</div>
+          <div class="tb-p">29. oktobra 1918 je bila razglašena Država SHS (Slovencev, Hrvatov in Srbov). 1. decembra 1918 je bila razglašena Kraljevina Srbov, Hrvatov in Slovencev (SHS) z dinastijo Karadjordjevič. Slovenija v okviru te države ni bila enota – razdeljena na banovine.</div>
+          <div class="tb-key"><strong>Problem Primorske:</strong> Z Rapalsko pogodbo (1920) je Primorska (Trst, Gorica, Istra) prišla pod Italijo. ~500.000 Slovencev pod fašistično oblastjo.</div>
+          <div class="tb-h2">Šestojanuarska diktatura (1929)</div>
+          <div class="tb-p">Kralj Aleksander I. je 6. januarja 1929 razpustil parlament in uvedel diktaturo. Prepovedal je politične stranke in nacionalna gibanja. Država je bila preimenovana v Jugoslavijo. Aleksander je bil umorjen 1934 v Marseilleu (ustaška in makedonska zarota).</div>
+        </div>
+
+        <div id="ch7" class="tb-chapter">
+          <div class="tb-h1">NOB in Slovenija v 2. sv. vojni</div>
+          <div class="tag-row"><span class="tag">partizani</span><span class="tag">OF</span><span class="tag">domobranci</span><span class="tag">razkosanje</span></div>
+          <div class="tb-h2">Razkosanje Jugoslavije 1941</div>
+          <div class="tb-p">6. aprila 1941 je os (Nemčija, Italija, Madžarska, Bolgarija) napadla Jugoslavijo. Slovenija je bila razdeljena na tri dele: nemška zasedba (Štajerska, Gorenjska), italijanska zasedba (Ljubljana, del Dolenjske, Primorska), madžarska zasedba (Prekmurje). Hrvaška je postala NDH (Neodvisna država Hrvaška) pod ustaškim vodjo Ante Pavelićem.</div>
+          <div class="tb-h2">Osvobodilna fronta</div>
+          <div class="tb-p">Aprila 1941 je bila ustanovljena Osvobodilna fronta slovenskega naroda (OF). Začetnik – Josip Vidmar in Boris Kidrič (komunistična partija je kmalu prevzela vodstvo). OF je organizirala partizansko gibanje – oborožen odpor.</div>
+          <div class="tb-key"><strong>Josip Broz Tito</strong> je vodil Narodnoosvobodilno gibanje (NOB) Jugoslavije. 29. november 1943: Avnoj v Jajcu – odloča o federativni ureditvi Jugoslavije.</div>
+          <div class="tb-h2">Kolaboracija</div>
+          <div class="tb-p">V Ljubljanski pokrajini so bile organizirane Vaške straže (od 1942) in pozneje Slovensko domobranstvo (domobranci). Borili so se skupaj z nemškim/italijanskim okupatorjem proti partizanom. Po vojni je večina domobrancev bežala v Avstrijo – britansko vojsko so izročili Titovim partizanom → poboji v Kočevskem rogu in drugod (1945).</div>
+        </div>
+
+        <div id="ch8" class="tb-chapter">
+          <div class="tb-h1">Socialistična Federativna Republika Jugoslavija</div>
+          <div class="tag-row"><span class="tag">tito</span><span class="tag">informbiro</span><span class="tag">samoupravljanje</span><span class="tag">krize</span></div>
+          <div class="tb-h2">Ustanavljanje socialistične Jugoslavije</div>
+          <div class="tb-p">Po vojni (1945) je bila vzpostavljena Federativna narodna republika Jugoslavija. Tito je postal predsednik vlade, Kardelj minister za zunanje zadeve. Ustvarili so zvezno socialistično državo, sestavljeno iz 6 republik (Slovenija, Hrvaška, BiH, Srbija, Makedonija, Črna gora) in 2 pokrajini (Kosovo, Vojvodina).</div>
+          <div class="tb-key"><strong>Informbirovski spor (1948):</strong> Stalin je Tita izključil iz Kominforma. Tito je zavrnil podreditev ZSSR – edinstvena neodvisna pot komunizma (titoizem).</div>
+          <div class="tb-h2">Samoupravljanje</div>
+          <div class="tb-p">Od 1950 uveljavljeno delavsko samoupravljanje – delavci upravljajo podjetja. Odprtost gospodarstva navzven, trgi so bili bolj prosti kot v ostalih socialističnih državah. Višji standard kot v V. bloku, možnost potovanj na Zahod.</div>
+          <div class="tb-h2">Krize 60ih/70ih in razpad</div>
+          <div class="tb-p">1971: Hrvaška pomlad (maspok) – Tito jo zaduši. 1974: nova ustava (dala pokrajinama veto v parlamentu). Tito umre 4. maja 1980. Rotirajoče predsedstvo ne uspe. 1988–89: Srbija ukine avtonomijo Kosova, Milošević. 1991: Slovenija in Hrvaška razglasita neodvisnost.</div>
+        </div>
+
+        <div id="ch9" class="tb-chapter">
+          <div class="tb-h1">Osamosvojitev Slovenije</div>
+          <div class="tag-row"><span class="tag">DEMOS</span><span class="tag">plebiscit</span><span class="tag">10-dnevna vojna</span><span class="tag">EU/NATO</span></div>
+          <div class="tb-h2">Pot do osamosvojitve</div>
+          <div class="tb-timeline">
+            <div class="tl-item"><div class="tl-year">1987</div><div class="tl-dot"></div><div class="tl-text">57. številka Nove revije: Prispevki za slovenski nacionalni program. Zahteva po demokratizaciji in samostojnosti.</div></div>
+            <div class="tl-item"><div class="tl-year">1988</div><div class="tl-dot"></div><div class="tl-text">Proces JBTZ (Janša, Borštner, Tasič, Zavrl): obsodba v slovenščini zahtevana. Množični protesti. Odbor za varstvo človekovih pravic.</div></div>
+            <div class="tl-item"><div class="tl-year">1989</div><div class="tl-dot"></div><div class="tl-text">Majniška deklaracija: zahteva po samostojni državi. Pomlad v Evropi. Demokratizacija v SLO.</div></div>
+            <div class="tl-item"><div class="tl-year">1990</div><div class="tl-dot"></div><div class="tl-text">Prve večstrankarske volitve (apr). DEMOS zmaga, Lojze Peterle premier. Milan Kučan predsednik. 23. dec: Plebiscit o osamosvojitvi: 88,5 % ZA.</div></div>
+            <div class="tl-item"><div class="tl-year">25.6.1991</div><div class="tl-dot"></div><div class="tl-text">Razglasitev neodvisnosti. JLA napade. 10-dnevna vojna (Brionska deklaracija 7. julij).</div></div>
+            <div class="tl-item"><div class="tl-year">1992</div><div class="tl-dot"></div><div class="tl-text">Mednarodna priznanja. Slovenija v ZN.</div></div>
+            <div class="tl-item"><div class="tl-year">2004</div><div class="tl-dot"></div><div class="tl-text">Vstop v EU in NATO.</div></div>
+          </div>
+          <div class="tb-key"><strong>DEMOS</strong> (Demokratična opozicija Slovenije): koalicija demokratičnih strank, ki je zmagala na prvih svobodnih volitvah 1990. Vodil jo je Lojze Peterle.</div>
+        </div>
+
+        <div id="ch10" class="tb-chapter">
+          <div class="tb-h1">Gospodarska in socialna zgodovina 20. st.</div>
+          <div class="tag-row"><span class="tag">industrializacija</span><span class="tag">welfare state</span><span class="tag">globalizacija</span></div>
+          <div class="tb-h2">Gospodarski razvoj</div>
+          <div class="tb-p">Fordizem in taylorizam: množična proizvodnja, tekočem trak (Henry Ford), racionalizacija dela (Frederick Taylor). Porast industrije v medvojnem obdobju. Welfare state po 2. sv. vojni: socialna država (zdravstvo, pokojnine, brezposelnost) – temelj zahodnoevropske demokracije.</div>
+          <div class="tb-h2">Ekonomske krize</div>
+          <div class="tb-ul">
+            <li><strong>Velika depresija 1929:</strong> Zlom borznega trga → deflacija, brezposelnost, bank-runs. FDR's New Deal v ZDA.</li>
+            <li><strong>Naftna kriza 1973:</strong> OPEC embargo → cene nafte 4x. Stagflacija. Iskanje alternativnih virov.</li>
+            <li><strong>Finančna kriza 2008:</strong> Hipotekarni mehurček, Lehman Brothers. Globalna recesija. EU dolžniška kriza.</li>
+          </div>
+          <div class="tb-h2">Globalizacija</div>
+          <div class="tb-p">Od 80ih let: liberalizacija svetovne trgovine (GATT → WTO), transnacionalne korporacije, informacijska revolucija (internet). Prednosti: gospodarska rast, prenos znanja. Slabosti: neenakost, izkoriščanje cenejše delovne sile, okoljski problemi.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ AI ═══════════════ -->
+<div id="section-ai" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>AI Asistent za Zgodovino</h2>
+      <p>Postavi katerokoli vprašanje iz maturitetne snovi</p>
+      <div class="divider"></div>
+    </div>
+    <div class="chat-wrap">
+      <div class="quick-qs">
+        <span class="quick-q" onclick="sendQuick('Razloži vzroke za 1. svetovno vojno.')">Vzroki 1. SV</span>
+        <span class="quick-q" onclick="sendQuick('Kaj je bil holokavst?')">Holokavst</span>
+        <span class="quick-q" onclick="sendQuick('Razloži kubano raketno krizo.')">Kubanska kriza</span>
+        <span class="quick-q" onclick="sendQuick('Kdaj in kako se je Slovenija osamosvojila?')">Osamosvojitev</span>
+        <span class="quick-q" onclick="sendQuick('Kaj je bilo gibanje neuvrščenih?')">Neuvrščeni</span>
+        <span class="quick-q" onclick="sendQuick('Kaj je bila informbirovski spor?')">Informbiro</span>
+        <span class="quick-q" onclick="sendQuick('Razloži Stalinizem in totalitarizem.')">Stalinizem</span>
+        <span class="quick-q" onclick="sendQuick('Zakaj je Nemčija izgubila 2. svetovno vojno?')">Nemčija 2. SV</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="msg ai">
+          <div class="msg-role">AI Asistent</div>
+          <div class="msg-body">Zdravo! Sem tvoj asistent za maturo iz zgodovine. Postavi mi katerokoli vprašanje o snovi – razlagam, povzemam, narekujem ključne pojme. Pritisnite na hitro vprašanje zgoraj ali vtipkajte svoje.</div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <textarea id="chatInput" rows="2" placeholder="Vpiši vprašanje... (Enter za pošlji, Shift+Enter za novo vrstico)"></textarea>
+        <button class="btn primary" onclick="sendChat()" id="sendBtn">Pošlji</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═════════ NAVIGATION ═════════
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
+  if (id === 'flashcards') renderCard();
+  if (id === 'quiz') ; // quiz handles its own state
+}
+
+// ═════════ FLASHCARDS ═════════
+const allCards = [
+  {cat:'1.sv', q:'Kdaj in kje je bil atentat, ki je sprožil 1. svetovno vojno?', a:'28. junija 1914 v Sarajevu. Gavrilo Princip je ustrelil nadvojvodo Franca Ferdinanda Habsburškega in njegovo ženo.'},
+  {cat:'1.sv', q:'Kateri sta bili dve zavezniški skupini v 1. sv. vojni?', a:'Trojno zavezništvo (Nemčija, Avstro-Ogrska, Italija) in Trojni sporazum / Antanta (Francija, Rusija, Velika Britanija + pozneje ZDA, Italija).'},
+  {cat:'1.sv', q:'Kaj je bila Schlieffen-ov načrt?', a:'Nemški vojni načrt za hitr zmago: najprej hitro premagati Francijo (skozi Belgijo), nato premekniti sile na vzhod proti Rusiji. Ni se posrečil – fronta se je ustavila.'},
+  {cat:'1.sv', q:'Kaj se je zgodilo pri Kobaridu leta 1917?', a:'12. soška bitka (24. oktobra 1917). Avstro-nemški preboj italijanske fronte. Italija se je morala umakniti za reko Piavo. Ena največjih taktičnih zmag v vojni.'},
+  {cat:'1.sv', q:'Kateri so bili glavni elementi Versajske pogodbe?', a:'Nemčija spoznana za krivo; reparacije 132 mlrd zlatih mark; izguba kolonij in ozemelj (Alzacija-Lorena Franciji); vojska omejena; Liga narodov.'},
+  {cat:'1.sv', q:'Katera načela je uveljavljal Woodrow Wilson?', a:'14 točk: samoodločba narodov, svoboda morij, razorožitev, Liga narodov kot stalni mednarodni forum za reševanje sporov.'},
+  {cat:'medvojna', q:'Kdaj in zakaj je Hitler prišel na oblast?', a:'30. januarja 1933 postal kancler. Razlogi: Weimarska republika oslabljena z Versajem, hiperinflacijo in depresijo; NSDAP obljubila obnovo; propaganda in terorizem SA.'},
+  {cat:'medvojna', q:'Kaj so bili Nürnberški zakoni (1935)?', a:'Rasistična antisemitska zakonodaja: Zakon o Reichdržavljanstvu (Judje niso več državljani) in Zakon za zaščito nemške krvi. Pravna osnova za preganjanje Judov.'},
+  {cat:'medvojna', q:'Kaj je bila Kristalna noč (1938)?', a:'9.–10. novembra 1938: koordiniran pogrom proti Judom v Nemčiji in Avstriji. Uničene sinagoge, judovske trgovine, aretacije ~30.000 Judov.'},
+  {cat:'medvojna', q:'Kaj je bil Münchenski sporazum (1938)?', a:'Britanski PM Chamberlain in Daladier sta pristala na priključitev Sudetov Nemčiji – politika pomiritve (appeasement). Češkoslovaška ni bila povabljena na pogajanja.'},
+  {cat:'medvojna', q:'Kaj je bil Ribbentrop-Molotov pakt?', a:'23. avgusta 1939 – Nemčija in ZSSR sta podpisali pakt o nenapadanju z tajnim protokolom o razdelitvi VZhodne Evrope (Baltik, V. Poljska, Besarabija za ZSSR).'},
+  {cat:'medvojna', q:'Kaj je bila Velika depresija in kdaj se je začela?', a:'Svetovna gospodarska kriza, sprožena z zlomom NYSE 24. oktobra 1929 (Black Thursday). Brezposelnost v ZDA do 25 %, deflacija, propad bank, gospodarska stagnacija.'},
+  {cat:'2.sv', q:'Kdaj je Nemčija napadla ZSSR in kako se je imenovala ta operacija?', a:'22. junija 1941. Operacija Barbarossa. Največja kopenska vojska v zgodovini – 3 milijone vojakov. Sprva bliskoviti uspehi, nato pa zaustavitev pri Moskvi in Stalingradu.'},
+  {cat:'2.sv', q:'Kaj je pomenila bitka pri Stalingradu?', a:'Bitka feb. 1943 – nemška 6. armada pod Paulusom kapitulira. Prelomnica na Vzhodnem bojišču. ZSSR prešla v ofenzivo. Simbolično in strateško ključna.'},
+  {cat:'2.sv', q:'Kaj je bil D-Day?', a:'6. junija 1944: Operacija Overlord – izkrcanje zavezniških sil v Normandiji (Francija). Največja amfibijska operacija v zgodovini. Odprtje zahodne fronte.'},
+  {cat:'2.sv', q:'Kaj je holokavst?', a:'Sistematično, z državnim aparatom izvedeno uničevanje Judov in drugih skupin s strani nacistov. 6 milijonov Judov umorjenih. Konferenca v Wannseeju (1942) je organizirala "Končno rešitev".'},
+  {cat:'2.sv', q:'Kdaj je Japonska napadla Pearl Harbor?', a:'7. decembra 1941. Napad japonskih letal na ameriško pomorsko bazo. ZDA so vstopile v vojno.'},
+  {cat:'2.sv', q:'Kdaj in kje so bile jedrske bombe odvržene na Japonsko?', a:'6. avgusta 1945 na Hirošimo (bomba Little Boy), 9. avgusta na Nagasaki (Fat Man). Japonska je kapitulirala 2. septembra 1945.'},
+  {cat:'hladna', q:'Kaj je bila Trumanova doktrina?', a:'1947: ZDA bodo podpirale vsako svobodno nacijo, ki je pod grožnjo komunizma. Konkretno: finančna podpora Grčiji in Turčiji. Osnova politike zadrževanja komunizma (containment).'},
+  {cat:'hladna', q:'Kaj je bil Marshallov plan?', a:'1947–1951: ZDA namenile ~13 mlrd $ za obnovo Zahode Evrope po vojni. Namen: preprečiti vzpon komunizma v revnih državah.'},
+  {cat:'hladna', q:'Kdaj je bil zgrajen berlinski zid in kdaj je padel?', a:'Zgrajen 13. avgusta 1961 (NDR je preprečila beg na Zahod). Padel 9. novembra 1989 – simbol konca hladne vojne.'},
+  {cat:'hladna', q:'Kaj je bila Kubanska raketna kriza?', a:'Oktober 1962: ZSSR je namestila jedrske rakete na Kubi. Kennedy razglasi morsko blokado. 13 dni na robu jedrske vojne. ZSSR umakne rakete, ZDA obljubijo nenapad na Kubo.'},
+  {cat:'hladna', q:'Kdaj se je razpadla ZSSR?', a:'25. decembra 1991 Gorbačov uradno razpusti ZSSR. 15 neodvisnih republik. Konec hladne vojne.'},
+  {cat:'hladna', q:'Kaj sta glasnost in perestrojka?', a:'Gorbačovovi reformi od 1985. Glasnost = odprtost, svobodnejša javna razprava. Perestrojka = prestrukturiranje (ekonomske reforme). Pospešili razpad ZSSR.'},
+  {cat:'jug', q:'Kdaj in kako je nastala Jugoslavija?', a:'1. decembra 1918: Kraljevina SHS (Srbov, Hrvatov, Slovencev) z династijo Karađorđevič. 1929: preimenovana v Jugoslavijo.'},
+  {cat:'jug', q:'Kaj je bila šestojanuarska diktatura?', a:'6. januarja 1929 je kralj Aleksander I. razpustil parlament in uvedel osebno diktaturo. Prepovedal stranke, spremenil ime v Jugoslavija, razdelil na banovine.'},
+  {cat:'jug', q:'Kaj je bil Tito?', a:'Josip Broz Tito (1892–1980): komunistični revolucionar, vodja NOB, predsednik Jugoslavije (1953–1980). Vodil neodvisno komunistično pot, zavračal Stalinovo nadrejenost.'},
+  {cat:'jug', q:'Kaj je bil informbirovski spor?', a:'1948: Stalin izključi Jugoslavijo iz Kominforma (Informbiroja). Tito zavrne podreditev – Jugoslavija ostane komunistična, a neodvisna od ZSSR. Edini tak primer v V. bloku.'},
+  {cat:'jug', q:'Kaj je delavsko samoupravljanje?', a:'Sistem uveden 1950 v Jugoslaviji: delavci neposredno upravljajo podjetja prek svetov delavcev. Jugoslovansko posebnost – ni centralnega planiranja kot v ZSSR.'},
+  {cat:'jug', q:'Kdaj je Tito umrl in kakšne so bile posledice?', a:'4. maja 1980. Po njegovi smrti rotirajoče predsedstvo ni moglo zamenjati njegove avtoritete. Povečale so se nacionalne napetosti (Srbija-Kosovo-Hrvaška), ki so vodile k razpadu.'},
+  {cat:'slo', q:'Kaj je bila Osvobodilna fronta (OF)?', a:'Aprila 1941 ustanovljena odporniška organizacija. Vodila partizansko gibanje v Slovenijo. Komunistična partija je prevzela vodstvo. Usklajevala se je s Titovim NOB.'},
+  {cat:'slo', q:'Kdo so bili domobranci?', a:'Slovensko domobranstvo (1943–45) – borili so se skupaj z nemškim okupatorjem proti partizanom. Po vojni bežali v Avstrijo, a so bili vrnjeni Titovim oblastem → poboji v Kočevskem rogu.'},
+  {cat:'slo', q:'Kdaj je bil plebiscit o osamosvojitvi?', a:'23. decembra 1990. Udeležba 93,3 %. Za neodvisnost glasovalo 88,5 % vseh volilnih upravičencev.'},
+  {cat:'slo', q:'Kdaj je Slovenija razglasila neodvisnost?', a:'25. junija 1991. Sledila je 10-dnevna vojna z JLA. Brionska deklaracija 7. julija 1991 – JLA se umakne.'},
+  {cat:'slo', q:'Kaj je bil proces JBTZ?', a:'1988: jugoslovansko sodišče sodi Janezu Janši, Davidu Tasičem, Ivanu Borštnerju, Francu Zavrlu v slovenščini. Izzvalo množične proteste. Obenem simbol slovenskega upora.'},
+  {cat:'slo', q:'Kdaj je Slovenija vstopila v EU in NATO?', a:'1. maja 2004 v EU in NATO. Slovenija je bila med prvimi novimi članicami skupaj s še 9 državami.'},
+  {cat:'col', q:'Kaj je bilo gibanje neuvrščenih?', a:'Politično gibanje, ustanovljeno 1961 v Beogradu. Ne pristati ne na zahodni (ZDA) ne na vzhodni blok (ZSSR). Ključni akterji: Tito (Jugoslavija), Nehru (Indija), Nasser (Egipt).'},
+  {cat:'col', q:'Kdaj in kje je Indija pridobila neodvisnost?', a:'15. avgusta 1947. Od Britanije. Hkrati je nastala Pakistan. Voditelja: Jawaharlal Nehru (Indija) in Muhammad Ali Jinnah (Pakistan). Gandhijevo nenasilno gibanje.'},
+  {cat:'col', q:'Kaj je bila alžirska vojna?', a:'1954–1962: Alžirija se borila za neodvisnost od Francije. FLN vodila gverilo. Mučenja in krutost na obeh straneh. Konec: Eviansko sporazum 1962 – neodvisnost.'},
+  {cat:'ekon', q:'Kaj je fordizem?', a:'Sistem množične industrijske proizvodnje, ki ga je vpeljal Henry Ford. Tekoči trak, standardizacija, visoke plače delavcev → si kupijo, kar proizvajajo. Osnova 20. st. industrije.'},
+  {cat:'ekon', q:'Kaj je welfare state (socialna država)?', a:'Sistem, v katerem država zagotavlja temeljne socialne storitve: zdravstvo, pokojnine, nadomestila za brezposelnost, izobrazba. Razvit po 2. sv. vojni v Z. Evropi.'},
+  {cat:'ekon', q:'Kaj je bila naftna kriza 1973?', a:'OPEC je embargoval izvoz nafte v zahod (podpora arabskim državam v vojni Yom Kipur). Cene nafte so 4-krat porasle. Stagflacija. Iskanje alternativnih virov energije.'},
+];
+
+let filteredCards = [...allCards];
+let currentCard = 0;
+let known = {};
+
+function filterCards() {
+  const cat = document.getElementById('fc-category').value;
+  filteredCards = cat === 'vse' ? [...allCards] : allCards.filter(c => c.cat === cat);
+  currentCard = 0;
+  renderCard();
+}
+function renderCard() {
+  if (!filteredCards.length) return;
+  const c = filteredCards[currentCard];
+  document.getElementById('fc-q').textContent = c.q;
+  document.getElementById('fc-a').textContent = c.a;
+  const labels = {'1.sv':'1. Svetovna vojna','medvojna':'Medvojna obdobje','2.sv':'2. Svetovna vojna','hladna':'Hladna vojna','jug':'Jugoslavija','slo':'Slovenija','col':'Dekolonizacija','ekon':'Ekonomska zgodovina'};
+  const tag = labels[c.cat] || c.cat;
+  document.getElementById('fc-tag').textContent = tag;
+  document.getElementById('fc-tag2').textContent = tag;
+  document.getElementById('fc-counter').textContent = (currentCard+1) + ' / ' + filteredCards.length;
+  document.getElementById('fc-bar').style.width = ((currentCard+1)/filteredCards.length*100) + '%';
+  document.getElementById('fc-scene').classList.remove('flipped');
+  renderKnownBar();
+}
+function flipCard() { document.getElementById('fc-scene').classList.toggle('flipped'); }
+function nextCard() { if (currentCard < filteredCards.length-1) { currentCard++; renderCard(); } }
+function prevCard() { if (currentCard > 0) { currentCard--; renderCard(); } }
+function shuffleCards() {
+  for (let i = filteredCards.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [filteredCards[i], filteredCards[j]] = [filteredCards[j], filteredCards[i]];
+  }
+  currentCard = 0; renderCard();
+}
+function markKnown(yes) { known[currentCard] = yes; renderKnownBar(); nextCard(); }
+function resetKnown() { known = {}; renderKnownBar(); }
+function renderKnownBar() {
+  const bar = document.getElementById('known-bar');
+  const yesCount = Object.values(known).filter(v=>v).length;
+  const noCount = Object.values(known).filter(v=>!v).length;
+  bar.innerHTML = '';
+  if (yesCount) bar.innerHTML += `<span class="known-badge yes">✓ Vem: ${yesCount}</span>`;
+  if (noCount) bar.innerHTML += `<span class="known-badge no">✗ Ne vem: ${noCount}</span>`;
+}
+
+// ═════════ QUIZ ═════════
+const quizData = [
+  {cat:'1.sv', q:'Kdaj je bil atentat v Sarajevu?', opts:['28. junija 1914','4. avgusta 1914','1. julija 1916','11. novembra 1918'], ans:0, explain:'Gavrilo Princip je 28. junija 1914 ustrelil Franca Ferdinanda in njegovo ženo Sofijo. Ta atentat je sprožil julijske krize in posledično 1. svetovno vojno.'},
+  {cat:'1.sv', q:'Kaj je bila Schlieffen-ov načrt?', opts:['Napad na Rusijo z vzhoda','Napad na Francijo skozi Belgijo','Blokada Britanije','Zavzetje Balkana'], ans:1, explain:'Schlieffen-ov načrt je predvideval hitro premaganje Francije z obhodom skozi nevtralno Belgijo, preden bi Rusija mobilizirala. Ker je Britanija branila Belgijo, je Britanija vstopila v vojno.'},
+  {cat:'1.sv', q:'Katera pogodba je končala 1. svetovno vojno z Nemčijo?', opts:['Saint-Germain','Trianon','Versailles','Neuilly'], ans:2, explain:'Versajska pogodba junija 1919 je Nemčiji naložila krivdo za vojni, reparacije, izgube ozemelj in omejitve oborožitve.'},
+  {cat:'medvojna', q:'V katerem letu je Hitler postal nemški kancler?', opts:['1929','1931','1933','1935'], ans:2, explain:'Hitler je postal kancler 30. januarja 1933. Predsednik Hindenburg ga je imenoval v upanju, da bo Hitlerje mogoče kontrolirati – a Hitler je hitro utrdil oblast.'},
+  {cat:'medvojna', q:'Kaj je Münchenski sporazum (1938) določal?', opts:['Nemčija si priključi Avstrijo','Nemčija dobi Sudete','Italija dobi Tirolsko','Razkosanje Češkoslovaške'], ans:1, explain:'Münchenski sporazum (sept. 1938): Britanija in Francija sta za ceno miru pristali, da Nemčija priključi Sudete. "Appeasement" politika.'},
+  {cat:'medvojna', q:'Kdaj se je začela velika depresija?', opts:['1927','1929','1931','1933'], ans:1, explain:'Black Thursday, 24. oktober 1929 – zlom NYSE. Sprožil je globalno ekonomsko krizo, brezposelnost in politično radikalizacijo.'},
+  {cat:'2.sv', q:'Kdaj je Nemčija napadla ZSSR?', opts:['1. september 1939','22. junij 1941','7. december 1941','6. junij 1944'], ans:1, explain:'Operacija Barbarossa, 22. junija 1941 – 3 milijone nemških vojakov napadejo ZSSR vzdolž 2900 km fronte. Kljub začetnim uspehom je operacija do zime 1941 zastala.'},
+  {cat:'2.sv', q:'Katera bitka je bila prelomnica na vzhodnem bojišču?', opts:['Kursk','Moskva','Stalingrad','Minsk'], ans:2, explain:'Bitka pri Stalingradu (avgust 1942 – februar 1943): nemška 6. armada je kapitulirala. ZSSR je prešla v strateško ofenzivo. Psihološki in strateški prelom.'},
+  {cat:'2.sv', q:'Kaj je pomenila "Končna rešitev" (Endlösung)?', opts:['Sporazum z ZSSR','Kapitulacija Nemčije','Sistematično uničevanje Judov','Evakuacija Berlina'], ans:2, explain:'Wannseejska konferenca januarja 1942 je koordinirala "Končno rešitev judovskega vprašanja" – sistematično uničevanje Judov prek sistema koncentracijskih in uničevalnih taborišč.'},
+  {cat:'2.sv', q:'Kdaj je bil D-Day?', opts:['6. junija 1944','8. maja 1945','25. julija 1944','2. septembra 1945'], ans:0, explain:'D-Day (6. junij 1944) – Operacija Overlord. Zavezniško izkrcanje v Normandiji. Odprtje zahodne fronte. Začetek osvobajanja Zahodne Evrope.'},
+  {cat:'hladna', q:'Katero zavezništvo sta ustanovili zahodne demokracije leta 1949?', opts:['Varšavski pakt','OZN','NATO','OECD'], ans:2, explain:'NATO (Severnoatlantski pakt) je bil ustanovljen 4. aprila 1949. Kolektivna obramba: napad na eno je napad na vse.'},
+  {cat:'hladna', q:'Kdaj je bil zgrajen berlinski zid?', opts:['1949','1955','1961','1968'], ans:2, explain:'13. avgusta 1961 je NDR zgradila berlinski zid, da bi ustavila množični beg v Zahodni Berlin. Zid je postal simbol hladne vojne in berlinskega razdelitve.'},
+  {cat:'hladna', q:'Kdaj je padel berlinski zid?', opts:['1985','1989','1991','1994'], ans:1, explain:'9. novembra 1989 so oblasti NDR oznanile, da smejo državljani prosto prehajati mejo. Množice so zid porušile. Simbolični konec hladne vojne.'},
+  {cat:'hladna', q:'Kateri dve reformi sta bila osnova Gorbačovove politike?', opts:['Détente in Ostpolitik','Perestrojka in glasnost','Containment in Rollback','Coexistence in Solidarity'], ans:1, explain:'Gorbačov je od 1985 uvajal perestrojko (gospodarske reforme) in glasnost (večja odprtost in svoboda tiska). Reforme so pospešile dezintegracijo ZSSR.'},
+  {cat:'jug', q:'Kdaj je bila ustanovljena Jugoslavija?', opts:['1. decembra 1918','28. junija 1919','26. novembra 1943','29. novembra 1945'], ans:0, explain:'1. decembra 1918 je bila razglašena Kraljevina Srbov, Hrvatov in Slovencev (pozneje preimenovana v Jugoslavijo 1929).'},
+  {cat:'jug', q:'Kaj je informbirovski spor?', opts:['Vojna med Jugoslavijo in ZSSR','Stalino izključevanje Tita iz Kominforma 1948','Notranjepolitična kriza v Jugoslaviji','Spor med Hrvaško in Srbijo'], ans:1, explain:'Junija 1948 je Stalin izključil Jugoslavijo iz Kominforma. Tito je zavrnil podrejanje – Jugoslavija je ostala neodvisna socialistična država, ki ni bila del vzhodnega bloka.'},
+  {cat:'jug', q:'Katera Titova inovacija v gospodarski ureditvi je bila edinstvena?', opts:['Centralno planiranje','Privatizacija','Delavsko samoupravljanje','Tržna ekonomija'], ans:2, explain:'Delavsko samoupravljanje (od 1950): delavci so neposredno upravljali podjetja prek delavskih svetov. Jugoslovanski "tretji pot" med kapitalizmom in stalinizmom.'},
+  {cat:'slo', q:'Koliko odstotkov je glasovalo ZA osamosvojitev na plebiscitu 1990?', opts:['71,2 %','78,5 %','88,5 %','95,1 %'], ans:2, explain:'Na plebiscitu 23. decembra 1990 je za neodvisnost glasovalo 88,5 % volilnih upravičencev (od vseh vpisanih, ne le tistih, ki so glasovali).'},
+  {cat:'slo', q:'Kdaj je Slovenija razglasila neodvisnost?', opts:['23. decembra 1990','25. junija 1991','8. oktobra 1991','15. januarja 1992'], ans:1, explain:'25. junija 1991 je Slovenija (skupaj s Hrvaško) razglasila neodvisnost. Sledila je 10-dnevna vojna z JLA. Brionska deklaracija 7. julija je zaključila spopade.'},
+  {cat:'slo', q:'Kdaj je bila Majniška deklaracija?', opts:['1987','1988','1989','1990'], ans:2, explain:'Majniška deklaracija 1989 je bila programska izjava za suvereno slovensko državo, ki so jo podprle skoraj vse politične organizacije v Sloveniji.'},
+  {cat:'col', q:'Kdo so bili ključni akterji gibanja neuvrščenih?', opts:['Truman, Churchill, De Gaulle','Tito, Nehru, Nasser','Kennedy, Khrushchev, Mao','Adenauer, De Gaulle, Eisenhower'], ans:1, explain:'Tito (Jugoslavija), Nehru (Indija) in Nasser (Egipt) so bili soustanovitelji Gibanja neuvrščenih na konferenci v Beogradu 1961.'},
+  {cat:'col', q:'Kdaj je Indija pridobila neodvisnost?', opts:['1945','1947','1949','1955'], ans:1, explain:'15. avgusta 1947 je Indija postala neodvisna od Britanije. Hkrati je bila razglašena Pakistan. Gandhijevo nenasilno odporniško gibanje je bilo ključno.'},
+  {cat:'ekon', q:'Kaj je pomenil Black Thursday (1929)?', opts:['Izbruh 2. sv. vojne','Zlom Wall Streeta – začetek Velike depresije','Nemška invazija na Francijo','Naftna kriza'], ans:1, explain:'24. oktober 1929 – zlom newyorške borze (NYSE). Cene delnic so se sesule, sledila je verižna reakcija propadlih bank in podjetij – začetek Velike depresije.'},
+];
+
+let quizCat = 'vse';
+let quizQuestions = [];
+let qIndex = 0;
+let qScore = 0;
+
+function selectCategory(el, cat) {
+  document.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  quizCat = cat;
+}
+function startQuiz() {
+  let pool = quizCat === 'vse' ? [...quizData] : quizData.filter(q => q.cat === quizCat);
+  quizQuestions = pool.sort(() => Math.random()-0.5).slice(0, Math.min(10, pool.length));
+  qIndex = 0; qScore = 0;
+  document.getElementById('quiz-setup-view').style.display = 'none';
+  document.getElementById('quiz-result-view').style.display = 'none';
+  document.getElementById('quiz-q-view').style.display = 'block';
+  renderQuestion();
+}
+function renderQuestion() {
+  if (qIndex >= quizQuestions.length) { showResult(); return; }
+  const q = quizQuestions[qIndex];
+  const labels = {'1.sv':'1. Svetovna vojna','medvojna':'Medvojna','2.sv':'2. Svetovna vojna','hladna':'Hladna vojna','jug':'Jugoslavija','slo':'Slovenija','col':'Dekolonizacija','ekon':'Ekonomija'};
+  document.getElementById('q-cat').textContent = labels[q.cat] || q.cat;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-source').textContent = '';
+  document.getElementById('q-score').textContent = qScore + ' / ' + qIndex;
+  document.getElementById('q-bar').style.width = (qIndex/quizQuestions.length*100) + '%';
+  document.getElementById('q-explain').classList.remove('show');
+  document.getElementById('q-explain').textContent = '';
+  document.getElementById('q-next-row').style.display = 'none';
+  const ansDiv = document.getElementById('answers');
+  ansDiv.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'ans-btn';
+    btn.textContent = opt;
+    btn.onclick = () => checkAnswer(i);
+    ansDiv.appendChild(btn);
+  });
+}
+function checkAnswer(idx) {
+  const q = quizQuestions[qIndex];
+  const btns = document.querySelectorAll('.ans-btn');
+  btns.forEach(b => b.disabled = true);
+  btns[q.ans].classList.add('correct');
+  if (idx !== q.ans) btns[idx].classList.add('wrong');
+  else qScore++;
+  document.getElementById('q-explain').textContent = q.explain;
+  document.getElementById('q-explain').classList.add('show');
+  document.getElementById('q-next-row').style.display = 'block';
+  document.getElementById('q-score').textContent = qScore + ' / ' + (qIndex+1);
+}
+function nextQuestion() { qIndex++; renderQuestion(); }
+function showResult() {
+  document.getElementById('quiz-q-view').style.display = 'none';
+  document.getElementById('quiz-result-view').style.display = 'block';
+  const pct = Math.round(qScore/quizQuestions.length*100);
+  document.getElementById('result-score').textContent = qScore + '/' + quizQuestions.length;
+  const msgs = [[0,50,'Nadaljuj z učenjem – preberi učbenik in ponovi flashcarde 💪'],[50,75,'Dobro! Še malo ponavljanja in bo odlično 📚'],[75,90,'Zelo dobro! Tik pred ciljem 🌟'],[90,101,'Odlično! Pripravljeni ste na maturo! 🏆']];
+  const m = msgs.find(([a,b]) => pct >= a && pct < b);
+  document.getElementById('result-msg').textContent = m ? m[2] : '';
+}
+function endQuiz() {
+  document.getElementById('quiz-setup-view').style.display = 'block';
+  document.getElementById('quiz-q-view').style.display = 'none';
+  document.getElementById('quiz-result-view').style.display = 'none';
+}
+
+// ═════════ TEXTBOOK ═════════
+function showChapter(id, btn) {
+  document.querySelectorAll('.tb-chapter').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tb-nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ═════════ AI CHAT ═════════
+let chatHistory = [];
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  addMessage('user', msg);
+  input.value = '';
+  chatHistory.push({ role: 'user', content: msg });
+  document.getElementById('sendBtn').disabled = true;
+  addMessage('ai', '...', true);
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: 'Si strokovni učitelj zgodovine za slovensko splošno maturo. Odgovarjaš v slovenščini, jasno in strukturirano. Snov obsega: 1. in 2. svetovna vojna, medvojna obdobje, hladna vojna, dekolonizacija, Jugoslavija, osamosvojitev Slovenije, gospodarska zgodovina 20. st. Pri odgovorih vedno navedi ključne datume, osebe in pojme. Odgovori naj bodo primerni za dijake, ki se pripravljajo na maturo. Ko je primerno, strukturiraj z alinejami. Bodi natančen in jedrnat.',
+        messages: chatHistory
+      })
+    });
+    const data = await response.json();
+    removeTyping();
+    const reply = data.content?.[0]?.text || 'Prišlo je do napake.';
+    chatHistory.push({ role: 'assistant', content: reply });
+    addMessage('ai', reply);
+  } catch(e) {
+    removeTyping();
+    addMessage('ai', 'Napaka pri povezavi z AI. Preveri internet.');
+  }
+  document.getElementById('sendBtn').disabled = false;
+}
+
+function sendQuick(q) {
+  document.getElementById('chatInput').value = q;
+  sendChat();
+}
+
+function addMessage(role, text, typing = false) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  if (typing) div.id = 'typing-msg';
+  div.innerHTML = `<div class="msg-role">${role === 'user' ? 'Ti' : 'AI Asistent'}</div><div class="msg-body ${typing?'typing':''}">${text.replace(/\n/g,'<br>')}</div>`;
+  const msgs = document.getElementById('chat-messages');
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping() {
+  const t = document.getElementById('typing-msg');
+  if (t) t.remove();
+}
+
+document.getElementById('chatInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+
+// init
+renderCard();
+</script>
+</body>
+</html>
